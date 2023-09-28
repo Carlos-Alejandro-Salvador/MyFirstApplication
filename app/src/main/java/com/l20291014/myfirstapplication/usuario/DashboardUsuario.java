@@ -1,8 +1,11 @@
 package com.l20291014.myfirstapplication.usuario;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,17 +30,27 @@ public class DashboardUsuario extends AppCompatActivity {
         //Obtenemos informacion del usuario logueado
         userInfo = ur.getRegisteredUsers().get(usuario).get(pass);
 
-        EditText etUser = findViewById(R.id.etUser);
-        EditText etPassword = findViewById(R.id.etPassword);
+        //EditText etUser = findViewById(R.id.etUser);
+        //EditText etPassword = findViewById(R.id.etPassword);
         EditText etName = findViewById(R.id.etName);
         EditText etAge = findViewById(R.id.etAge);
         EditText etEmail = findViewById(R.id.etEmail);
 
-        etUser.setText(userInfo.getUsuario().toString());
-        etPassword.setText(userInfo.getPass().toString());
+        //etUser.setText(userInfo.getUsuario().toString());
+        //etPassword.setText(userInfo.getPass().toString());
         etName.setText(userInfo.getNombre().toString());
         etAge.setText(String.valueOf(userInfo.getEdad()));
         etEmail.setText(userInfo.getEmail().toString());
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 }
